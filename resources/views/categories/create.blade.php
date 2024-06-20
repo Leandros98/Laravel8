@@ -18,7 +18,7 @@
 <body>
   <center>
   <div class="container">
-       <div class="col-md-8">
+       <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Créer un nouveau categorie</div>
 

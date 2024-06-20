@@ -16,11 +16,10 @@
         </style>
 </head>
 <body>
-<center>
   <div class="container">
-       <div class="col-md-8">
+       <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Modifier un contact</div>
+                    <div class="card-header"><center>Modifier un contact</center></div>
 
                     <div class="card-body">
                         <form action="" method="POST">
@@ -47,7 +46,7 @@
                             </div>
                             <label for="categorie_id">Categorie</label>
                             <select class="form-select" aria-label="Default select example" id="pays_id" name="categorie_id">
-                                <option selected value="1">Famille</option>
+                                <option selected value="" disabled>Famille</option>
                                 @foreach ($categories as $categorie)
                                 <option value="{{ $categorie->categorie_id}} ">{{ $categorie->nom }}</option>
                                 @endforeach
@@ -70,19 +69,26 @@
                                 @endforeach
                                 </select>
                             </div>
-                            <div class="form-group d-flex m-4">
-                            <label for="telephone" style="margin-right:10px;" >Pays</label>
-                            <select class="form-select" aria-label="Default select example" id="pays">
+                            <div class="row">
+                                <div class="col-2">
+                                <label for="telephone" >Pays</label>
+                                <select class="form-select" aria-label="Default select example" id="pays">
                                 <option selected value="+257">Burundi</option>
                         
                                 <option value=" "> Tanzanie</option>
                               
                                 </select>
+                                </div>
+                                <div class="col-10">
+                                <div class="form-group ">
                                 <label for="telephone" >Téléphone</label>
-                                <input type="text" class="form-control @error('telephone') is-invalid @enderror" id="telephone" name="telephone" value="{{$contact->telephone}}"  required>
+                                <input type="text" class="form-control form-control-sm @error('telephone') is-invalid @enderror" id="telephone" name="telephone" value="{{ old('telephone') }}" required>
                                 @error('telephone')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                                </div>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="adresse">Adresse</label>
@@ -160,6 +166,5 @@
                 </div>
             </div>
 </div>
-</center>
 </body>
 </html>

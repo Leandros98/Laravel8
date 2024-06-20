@@ -16,11 +16,10 @@
         </style>
 </head>
 <body>
-  <center>
   <div class="container">
-       <div class="col-md-8">
+       <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Créer un nouveau pays</div>
+                    <div class="card-header"><center>Créer un nouveau pays</center></div>
 
                     <div class="card-body">
                         <form action='storePays' method="POST">
@@ -48,6 +47,5 @@
                 </div>
             </div>
 </div>
-</center>
 </body>
 </html>
