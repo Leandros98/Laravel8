@@ -22,18 +22,7 @@ class ContactController extends Controller
         return view('welcome', compact('contacts'));
 
     }
-    public function welcame()
-    {
-        $contacts = Contact::all();
-        return view('welcome', compact('contacts'));
-    }
-    
-    public function recuperpaysverscontact()
-    {
-        $countries = Pays::all();
-        return view('contacts.create', compact('countries'));
-    }
-
+  
     /**
      * Show the form for creating a new resource.
      *

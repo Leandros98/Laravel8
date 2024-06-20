@@ -32,6 +32,10 @@
                     <a class="nav-link" href="#">Fusionner et gérer</a>
                     <a class="nav-link" href="#">Importer</a>  
                     <a class="nav-link" href="#">Corbeille</a> 
+                    <br>
+                    <br>
+                    <a class="nav-link" href="{{URL::to('/createCategorie')}}">Ajouter un categorie</a> 
+                    <a class="nav-link" href="{{URL::to('/createPays')}}">Ajouter un pays</a> 
                 </nav>
                </div>
             </div>

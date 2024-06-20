@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorie;
-use App\Http\Requests\StoreCategorieRequest;
+use App\Models\Contact;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateCategorieRequest;
 
 class CategorieController extends Controller
@@ -15,7 +16,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
 
     /**
@@ -25,7 +26,8 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Categorie::all();
+        return view('categories.create', compact('categories'));
     }
 
     /**
@@ -34,9 +36,13 @@ class CategorieController extends Controller
      * @param  \App\Http\Requests\StoreCategorieRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategorieRequest $request)
+    public function store(Request $request)
     {
-        //
+            $request->validate(['nom=>required:categories,nom','description=>required:descriptions,description']);
+            $categorie = Categorie::create($request->all([ 'nom','description']));
+            $contacts = Contact::all();
+            return view('welcome',compact('contacts'));
+        
     }
 
     /**

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pays;
-use App\Http\Requests\StorePaysRequest;
+use App\Models\Contact;
 use App\Http\Requests\UpdatePaysRequest;
+use Illuminate\Http\Request;
 
 class PaysController extends Controller
 {
@@ -15,8 +16,7 @@ class PaysController extends Controller
      */
     public function index()
     {
-        $pays = Pays::all();
-        return view('contacts.create', compact('pays'));
+       //
     }
    
 
@@ -27,7 +27,8 @@ class PaysController extends Controller
      */
     public function create()
     {
-        //
+        $pays = Pays::all();
+        return view('pays.create', compact('pays'));
     }
 
     /**
@@ -36,9 +37,13 @@ class PaysController extends Controller
      * @param  \App\Http\Requests\StorePaysRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePaysRequest $request)
+    public function store(Request $request)
     {
-        //
+            $request->validate(['nom=>required:pays,nom','code=>required:pays,code']);
+            $pays = Pays::create($request->all([ 'nom','code']));
+            $contacts = Contact::all();
+            return view('welcome',compact('contacts'));
+        
     }
 
     /**
