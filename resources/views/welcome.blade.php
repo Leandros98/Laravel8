@@ -20,22 +20,33 @@
     @section('content')
     <div class="container">
     <br>
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-9">
+        <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <br>
+        </div>
+    </div>
         <div class="row justify-content-center">
           <div class="col-md-3">
              <div class="card">
                 <nav class="nav flex-column">
                     <br>
-                    <a href="{{URL::to('/createContact')}}" class="btn btn-primary">+ Créer un contact</a>
-                    <a class="nav-link "href="#">Fréquents</a>
-                    <a class="nav-link" href="#">Autres contacts</a> 
-                    <a class="nav-link" href="#">Corriger et gérer</a> 
-                    <a class="nav-link" href="#">Fusionner et gérer</a>
-                    <a class="nav-link" href="#">Importer</a>  
-                    <a class="nav-link" href="#">Corbeille</a> 
+                    <a href="{{URL::to('/createContact')}}" class="btn btn-info btn-sm">+ Créer un contact</a>
+                    <a class="nav-link "href="#" style="color: black;">Fréquents</a>
+                    <a class="nav-link" href="#"style="color: black;">Autres contacts</a> 
+                    <a class="nav-link" href="#"style="color: black;">Corriger et gérer</a> 
+                    <a class="nav-link" href="#"style="color: black;">Fusionner et gérer</a>
+                    <a class="nav-link" href="#"style="color: black;">Importer</a>  
+                    <a class="nav-link" href="#"style="color: black;">Corbeille</a> 
                     <br>
-                    <br>
-                    <a class="nav-link" href="{{URL::to('/createCategorie')}}">Ajouter un categorie</a> 
-                    <a class="nav-link" href="{{URL::to('/createPays')}}">Ajouter un pays</a> 
+                    <a class="nav-link" href="{{URL::to('/createCategorie')}}"style="color: black;">Ajouter un categorie</a> 
+                    <a class="nav-link" href="{{URL::to('/createPays')}}"style="color: black;">Ajouter un pays</a> 
                 </nav>
                </div>
             </div>
@@ -55,6 +66,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                           <tr>
+                           <p class="load">Contacts</p>
+                           </tr>
                             @foreach ($contacts as $contact)
                            <tr>
                            <td>{{ $contact->prenom }}{{" "}}{{ $contact->nom }}</td>
