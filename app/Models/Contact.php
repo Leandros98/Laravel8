@@ -25,7 +25,7 @@ class Contact extends Model
         'reseau_sociaux',
         'note',
         'favori',
-        'creation',
+      
     
     ];
     public function categories()

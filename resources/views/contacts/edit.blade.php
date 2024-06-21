@@ -22,24 +22,22 @@
                     <div class="card-header"><center>Modifier un contact</center></div>
 
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{route('contacts.update', $editData->id)}}" method="POST">
                        <!-- <form action="/updateContact/{$contact->Ccontact_id}" method="POST"> -->
                         <button type="submit" class="btn btn-primary" style="float:right;">Créer</button>
                          <br>
                          @csrf
-                         @method('PUT')
                             <input type="hidden" name="" value="">
-                            @foreach($contacts as $contact)
                             <div class="form-group">
                                 <label for="nom">Nom</label>
-                                <input type="text" class="form-control @error('nom') is-invalid @enderror" id="nom" name="nom" value="{{$contact->nom}}" required>
+                                <input type="text" class="form-control @error('nom') is-invalid @enderror" id="nom" name="nom" value="{{$editData->nom}}">
                                 @error('nom')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="prenom">Prénom</label>
-                                <input type="text" class="form-control @error('prenom') is-invalid @enderror" id="prenom" name="prenom"  value="{{$contact->prenom}}"  required>
+                                <input type="text" class="form-control @error('prenom') is-invalid @enderror" id="prenom" name="prenom"  value="{{$editData->prenom}}"  required>
                                 @error('prenom')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -48,13 +46,13 @@
                             <select class="form-select" aria-label="Default select example" id="pays_id" name="categorie_id">
                                 <option selected value="" disabled>Famille</option>
                                 @foreach ($categories as $categorie)
-                                <option value="{{ $categorie->categorie_id}} ">{{ $categorie->nom }}</option>
+                                <option value="{{ $categorie->id}} ">{{ $categorie->nom }}</option>
                                 @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"  value="{{$contact->email}}"  required>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"  value="{{$editData->email}}"  >
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -65,7 +63,7 @@
                                 <option selected value="">selectez le pays</option>
                                 @foreach ($pays as $pay)
 
-                                <option value="{{ $pay->pays_id}} ">{{ $pay->nom }}{{ $pay->pays_id}}</option>
+                                <option value="{{ $pay->id}} ">{{ $pay->nom }}{{ $pay->id}}</option>
                                 @endforeach
                                 </select>
                             </div>
@@ -82,7 +80,7 @@
                                 <div class="col-10">
                                 <div class="form-group ">
                                 <label for="telephone" >Téléphone</label>
-                                <input type="text" class="form-control form-control-sm @error('telephone') is-invalid @enderror" id="telephone" name="telephone" value="{{ old('telephone') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('telephone') is-invalid @enderror" id="telephone" name="telephone" value="{{ $editData->telephone }}" required>
                                 @error('telephone')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -92,63 +90,63 @@
                             </div>
                             <div class="form-group">
                                 <label for="adresse">Adresse</label>
-                                <input type="text" class="form-control @error('adresse') is-invalid @enderror" id="adresse" name="adresse"  value="{{$contact->adresse}}"  required>
+                                <input type="text" class="form-control @error('adresse') is-invalid @enderror" id="adresse" name="adresse"  value="{{$editData->adresse}}"  >
                                 @error('adresse')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="anniversaire">Anniversaire</label>
-                                <input type="date" class="form-control @error('anniversaire') is-invalid @enderror" id="anniversaire" name="anniversaire"  value="{{$contact->anniversaire}}"  required>
+                                <input type="date" class="form-control @error('anniversaire') is-invalid @enderror" id="anniversaire" name="anniversaire"  value="{{$editData->anniversaire}}" >
                                 @error('anniversaire')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="entreprise">Nom de l'entreprise</label>
-                                <input type="text" class="form-control @error('entreprise') is-invalid @enderror" id="entreprise" name="entreprise" value="{{$contact->entreprise}}"  required>
+                                <input type="text" class="form-control @error('entreprise') is-invalid @enderror" id="entreprise" name="entreprise" value="{{$editData->entreprise}}" >
                                 @error('entreprise')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="fonction">Votre fonction</label>
-                                <input type="text" class="form-control @error('fonction') is-invalid @enderror" id="fonction" name="fonction" value="{{$contact->fonction}}"  required>
+                                <input type="text" class="form-control @error('fonction') is-invalid @enderror" id="fonction" name="fonction" value="{{$editData->fonction}}"  >
                                 @error('fonction')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="service">Service</label>
-                                <input type="text" class="form-control @error('service') is-invalid @enderror" id="service" name="service" value="{{$contact->service}}"  required>
+                                <input type="text" class="form-control @error('service') is-invalid @enderror" id="service" name="service" value="{{$editData->service}}"  >
                                 @error('service')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="titre">Titre</label>
-                                <input type="text" class="form-control @error('titre') is-invalid @enderror" id="titre" name="titre" v value="{{$contact->titre}}"  required>
+                                <input type="text" class="form-control @error('titre') is-invalid @enderror" id="titre" name="titre" v value="{{$editData->titre}}"  >
                                 @error('titre')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="site_web">Site web</label>
-                                <input type="text" class="form-control @error('site_web') is-invalid @enderror" id="site_web" name="site_web"  value="{{$contact->site_web}}" required>
+                                <input type="text" class="form-control @error('site_web') is-invalid @enderror" id="site_web" name="site_web"  value="{{$editData->site_web}}" >
                                 @error('site_web')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="reseau_sociaux">Reseaux sociaux</label>
-                                <input type="text" class="form-control @error('reseau_sociaux') is-invalid @enderror" id="reseau_sociaux" name="reseau_sociaux"  value="{{$contact->reseau_sociaux}}"  required>
+                                <input type="text" class="form-control @error('reseau_sociaux') is-invalid @enderror" id="reseau_sociaux" name="reseau_sociaux"  value="{{$editData->reseau_sociaux}}"  >
                                 @error('reseaux_sociaux')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="note">Note</label>
-                                <input type="text" class="form-control @error('note') is-invalid @enderror" id="note" name="note" value="{{$contact->note}}"  required>
+                                <input type="text" class="form-control @error('note') is-invalid @enderror" id="note" name="note" value="{{$editData->note}}"  >
                                 @error('note')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -160,7 +158,6 @@
                                    <option value="0">Non</option>
                                </select> 
                             </div>
-                            @endforeach
                         </form>
                     </div>
                 </div>

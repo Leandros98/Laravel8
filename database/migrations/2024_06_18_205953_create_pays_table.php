@@ -14,9 +14,9 @@ class CreatePaysTable extends Migration
     public function up()
     {
         Schema::create('pays', function (Blueprint $table) {
-                $table->id('pays_id');
-                $table->string('nom');
-                $table->string('code');
+                $table->id();
+                $table->string('nom')->default('Burundi');
+                $table->string('code')->default('+257');
                 $table->timestamps();
         });
     }

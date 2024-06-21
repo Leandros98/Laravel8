@@ -14,27 +14,26 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->id('contact_id');
+            $table->id();
             $table->unsignedBigInteger('categorie_id');
             $table->unsignedBigInteger('pays_id');
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email');
-            $table->string('telephone');
-            $table->string('adresse');
-            $table->date('anniversaire');
-            $table->string('entreprise');
-            $table->string('fonction');
-            $table->string('service');
-            $table->string('titre');
-            $table->string('site_web');
-            $table->string('reseau_sociaux');
-            $table->text('note');
-            $table->boolean('favori');
-            $table->timestamp('creation');
+            $table->string('nom')->nullable();
+            $table->string('prenom')->unique();
+            $table->string('email')->nullable();
+            $table->string('telephone')->unique();
+            $table->string('adresse')->nullable();
+            $table->date('anniversaire')->nullable();
+            $table->string('entreprise')->nullable();
+            $table->string('fonction')->nullable();
+            $table->string('service')->nullable();
+            $table->string('titre')->nullable();
+            $table->string('site_web')->nullable();
+            $table->string('reseau_sociaux')->nullable();
+            $table->text('note')->nullable();
+            $table->boolean('favori')->nullable();
             $table->timestamps();
-           $table->foreign('categorie_id')->references('categorie_id')->on('categories');
-            $table->foreign('pays_id')->references('pays_id')->on('pays');
+           $table->foreign('categorie_id')->references('id')->on('categories');
+            $table->foreign('pays_id')->references('id')->on('pays');
 
         });
     }

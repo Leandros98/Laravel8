@@ -30,7 +30,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="nom">Nom</label>
-                                <input type="text" class="form-control form-control-sm @error('nom') is-invalid @enderror" id="nom" name="nom" value="{{ old('nom') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('nom') is-invalid @enderror" id="nom" name="nom" value="{{ old('nom') }}">
                                 @error('nom')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -46,13 +46,13 @@
                             <select class="form-select form-control-sm" aria-label="Default select example" id="pays_id" name="categorie_id">
                                 <option selected value="1">Famille</option>
                                 @foreach ($categories as $categorie)
-                                <option value="{{ $categorie->categorie_id}} ">{{ $categorie->nom }}</option>
+                                <option value="{{ $categorie->id}} ">{{ $categorie->nom }}</option>
                                 @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail</label>
-                                <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                                <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -63,7 +63,7 @@
                                 <option selected value="">selectez le pays</option>
                                 @foreach ($pays as $pay)
 
-                                <option value="{{ $pay->pays_id}} ">{{ $pay->nom }}{{ $pay->pays_id}}</option>
+                                <option value="{{ $pay->id}} ">{{ $pay->nom }}{{ $pay->id}}</option>
                                 @endforeach
                                 </select>
                             </div>
@@ -90,63 +90,63 @@
                             </div>
                             <div class="form-group">
                                 <label for="adresse">Adresse</label>
-                                <input type="text" class="form-control form-control-sm @error('adresse') is-invalid @enderror" id="adresse" name="adresse" value="{{ old('adresse') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('adresse') is-invalid @enderror" id="adresse" name="adresse" value="{{ old('adresse') }}" >
                                 @error('adresse')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="anniversaire">Anniversaire</label>
-                                <input type="date" class="form-control form-control-sm @error('anniversaire') is-invalid @enderror" id="anniversaire" name="anniversaire" value="{{ old('anniversaire') }}" required>
+                                <input type="date" class="form-control form-control-sm @error('anniversaire') is-invalid @enderror" id="anniversaire" name="anniversaire" value="{{ old('anniversaire') }}">
                                 @error('anniversaire')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="entreprise">Nom de l'entreprise</label>
-                                <input type="text" class="form-control form-control-sm @error('entreprise') is-invalid @enderror" id="entreprise" name="entreprise" value="{{ old('entreprise') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('entreprise') is-invalid @enderror" id="entreprise" name="entreprise" value="{{ old('entreprise') }}">
                                 @error('entreprise')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="fonction">Votre fonction</label>
-                                <input type="text" class="form-control form-control-sm @error('fonction') is-invalid @enderror" id="fonction" name="fonction" value="{{ old('fonction') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('fonction') is-invalid @enderror" id="fonction" name="fonction" value="{{ old('fonction') }}" >
                                 @error('fonction')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="service">Service</label>
-                                <input type="text" class="form-control form-control-sm @error('service') is-invalid @enderror" id="service" name="service" value="{{ old('service') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('service') is-invalid @enderror" id="service" name="service" value="{{ old('service') }}" >
                                 @error('service')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="titre">Titre</label>
-                                <input type="text" class="form-control form-control-sm @error('titre') is-invalid @enderror" id="titre" name="titre" value="{{ old('titre') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('titre') is-invalid @enderror" id="titre" name="titre" value="{{ old('titre') }}" >
                                 @error('titre')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="site_web">Site web</label>
-                                <input type="text" class="form-control form-control-sm @error('site_web') is-invalid @enderror" id="site_web" name="site_web" value="{{ old('site_web') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('site_web') is-invalid @enderror" id="site_web" name="site_web" value="{{ old('site_web') }}" >
                                 @error('site_web')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="reseau_sociaux">Reseaux sociaux</label>
-                                <input type="text" class="form-control form-control-sm @error('reseau_sociaux') is-invalid @enderror" id="reseau_sociaux" name="reseau_sociaux" value="{{ old('reseau_sociaux') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('reseau_sociaux') is-invalid @enderror" id="reseau_sociaux" name="reseau_sociaux" value="{{ old('reseau_sociaux') }}" >
                                 @error('reseaux_sociaux')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="note">Note</label>
-                                <input type="text" class="form-control form-control-sm @error('note') is-invalid @enderror" id="note" name="note" value="{{ old('note') }}" required>
+                                <input type="text" class="form-control form-control-sm @error('note') is-invalid @enderror" id="note" name="note" value="{{ old('note') }}">
                                 @error('note')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

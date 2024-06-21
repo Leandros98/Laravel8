@@ -39,7 +39,7 @@
                 </nav>
                </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                <div class="card">
              
 
@@ -49,6 +49,7 @@
                                 <tr>
                                     <th>Nom</th>
                                     <th>Email</th>
+                                    <th>Actions</th>
                                    
                                     
                                 </tr>
@@ -56,9 +57,12 @@
                             <tbody>
                             @foreach ($contacts as $contact)
                            <tr>
-                           <td>{{ $contact->prenom }}{{ $contact->nom }}</td>
+                           <td>{{ $contact->prenom }}{{" "}}{{ $contact->nom }}</td>
                            <td>{{ $contact->email }}</td>
-                           <td> <a class="nav-link "href="{{URL::to('/modifierContact')}}">:</a></td>
+                           <td> 
+                                <a class="btn btn-info "href="{{route('contacts.edit', $contact->id)}}">:</a>
+                                <a class="btn btn-danger "href="{{route('contacts.delete', $contact->id)}}">X</a>
+                           </td>
                            </tr>
                             @endforeach
 

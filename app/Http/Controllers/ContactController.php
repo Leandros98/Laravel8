@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdateContactRequest;
 use App\Models\Categorie;
 use App\Models\Pays;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ContactController extends Controller
 {
@@ -75,11 +76,11 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {     $categories=Categorie::all();
           $pays=Pays::all();
-          $contacts = Contact::all();
-        return view('contacts.edit', compact('contact','pays','categories','contacts'));
+          $editData =Contact::find($id);
+        return view('contacts.edit', compact('pays','categories','editData'));
     }
 
     /**
@@ -89,9 +90,32 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateContactRequest $request, Contact $contact)
+    public function contactupdate(Request $request, $id)
     {
-        //
+        $data=Contact::find($id);
+        $validateData=  $request->validate(['categorie_id=>required:contacts','categorie_id'.$data->id,'pays_id=>required:contacts','pays_id'.$data->id,'nom=>required:contacts','nom'.$data->id,'prenom=> required:contacts','prenom'.$data->id,'email=>required:contacts,email'.$data->id,'telephone=>required:contacts,telephone'.$data->id,'adresse=>required:contacts,adresse'.$data->id,'anniversaire=>required:contacts,anniversaire'.$data->id,'entreprise=> required:contacts,entreprise'.$data->id,'fonction=>required:contacts,fonction','fonction'.$data->id,'service=>required:contacts,service','service'.$data->id,'titre=>required:contacts,titre'.$data->id,'site_web=>required:contacts,site_web'.$data->id,'reseaux_sociaux=>required:contacts,reseau_sociaux'.$data->id,'note=>required:contacts,note'.$data->id,'titre=>required:contacts,titre'.$data->id,'favori=>required:contacts,favori']);
+        $data->categorie_id=$request->categorie_id;
+        $data->pays_id=$request->pays_id;
+        $data->nom=$request->nom;
+        $data->prenom=$request->prenom;
+        $data->email=$request->email;
+        $data->telephone=$request->telephone;
+        $data->adresse=$request->adresse;
+        $data->anniversaire=$request->anniversaire;
+        $data->entreprise=$request->entreprise;
+        $data->fonction=$request->fonction;
+        $data->service=$request->service;
+        $data->titre=$request->titre;
+        $data->site_web=$request->site_web;
+        $data->reseau_sociaux=$request->reseau_sociaux;
+        $data->note=$request->note;
+        $data->favori=$request->favori;
+        $data->save();
+        $notification=array('message'=>'Le contact a ete modifie avec success',
+        'arlet_type'=>'success');
+        $contacts = Contact::all();
+        return view('welcome',compact('contacts'))->with($notification);
+        //return redirect()->route('welcome'->with($notification));
     }
 
     /**
@@ -100,12 +124,16 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
-    {
+    public function contactdelete($id)
+    {   $contact=Contact::find($id);
         $contact->delete();
+        $notification=array('message'=>'Le contact a ete supprime avec success',
+        'arlet_type'=>'success');
+        $contacts = Contact::all();
+        return view('welcome',compact('contacts'))->with($notification);
 
-        return redirect()->route('contacts.index')
-                        ->with('success', 'Contact supprimé avec succès.');
+        //return redirect()->route('contacts.index')
+                       // ->with('success', 'Contact supprimé avec succès.');
 
     }
 }

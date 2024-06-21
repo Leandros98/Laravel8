@@ -18,10 +18,15 @@ use Illuminate\Support\Facades\Route;
 */ //ContactController
 Route::resource('contacts', ContactController::class);
 Route::get('/',[ContactController::class,'index']);
-Route::get('/modifierContact',[ContactController::class,'edit']);
+//Route::get('/modifierContact',[ContactController::class,'edit']);
 Route::get('/createContact',[ContactController::class,'create'])->name("contacts.create");
 Route::post('/storecontact',[ContactController::class,'store']);
-Route::get('/create',[PaysController::class,'index']);
+Route::get('contacts/edit/{id}',[ContactController::class,'edit'])->name('contacts.edit');
+Route::post('contacts/update/{id}',[ContactController::class,'contactupdate'])->name('contacts.update');
+Route::get('contacts/delete/{id}',[ContactController::class,'contactdelete'])->name('contacts.delete');
+
+
+//Route::get('/create',[PaysController::class,'index']);
 
 // paysController
 Route::get('/createPays',[PaysController::class,'create'])->name("pays.create");
